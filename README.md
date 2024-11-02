@@ -1,6 +1,8 @@
-Bibliotecas necessárias para o projeto
+## Bibliotecas necessárias para o projeto
 
-npm install express
-npm install mongoose
+```
+npm install express 
+npm install mongoose 
 npm install dotenv 
 npm install nodemon@3.0.1
+```
