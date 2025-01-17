@@ -25,6 +25,27 @@ class UsuarioController{
 
     };
 
+    static async validaUsuarioSenha( req, res) {
+        try{
+            const usuarioDigitiado = req.params.usuario;
+            const senhaDigitada = req.params.senha;
+   
+            const usuarioEncontrado = await usuario.find( {usuario: usuarioDigitiado, senha: senhaDigitada} );
+
+            console.log(usuarioEncontrado.length);
+
+            if(usuarioEncontrado.length === 1){
+                res.status(200).json(usuarioEncontrado);
+            }else{
+                res.status(400).json({ message: `usuario não encontrado ou senha inválida`} );
+            }
+
+        }catch(erro){
+            res.status(500).json({ message: `${erro.message} - usuario não encontrado`});
+
+        }
+
+    };
 
     static async cadastrarUsuario (req, res) {
         try{
@@ -51,7 +72,7 @@ class UsuarioController{
         try{
             const id = req.params.id;
             await usuario.findByIdAndDelete(id);
-            res.status(200).json({ message: "Usuarui excluido!"});
+            res.status(200).json({ message: "Usuaruio excluido!"});
         }catch(erro){
             res.status(500).json({ message: `${erro.message} - falha ao excluir`});
 
