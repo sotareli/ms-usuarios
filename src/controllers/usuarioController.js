@@ -46,7 +46,7 @@ class UsuarioController {
 				senha: body?.password,
 			});
 
-			if (user) {
+			if (user?.length > 0) {
 				res.send(true);
 			} else {
 				res.send(false);
